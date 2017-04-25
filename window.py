@@ -13,6 +13,7 @@ class MyWindow(Gtk.Window):
 
 		self.starttimer = Gtk.Button(label="Start")
 		self.starttimer.connect("clicked", self.counttime)
+		self.starttimer.connect("delete-event", Gtk.main_quit)
 		self.box.pack_start(self.starttimer, True, True, 0)
 
 		self.stoptimer = Gtk.Button(label="Stop")
@@ -20,7 +21,6 @@ class MyWindow(Gtk.Window):
 		self.box.pack_start(self.stoptimer, True, True, 0)
 	
 	def counttime(self, widget):
-		print("Timer started...")
 		max_seconds = 10
 		count = 0
 		curr = sec_count = int(strftime("%S", gmtime()))
